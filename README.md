@@ -8,6 +8,6 @@ A biblioteca LangChain facilita a integração de recursos de NLP em aplicaçõe
 
 Uma de suas vantagens é a facilidade de integração entre outras bibliotecas e frameworks populares do Python, como NLTK e spaCy, o que amplia suas possibilidades e potencial de uso.
 
-
+[Documentação LangChain](https://python.langchain.com/docs/get_started/introduction)
 
 
