@@ -6,6 +6,7 @@ Data Scientist Jr.: Karina Gonçalves Soares
 Link de estudo: 
 
 1. https://medium.com/dev-genius/langchain-in-chains-21-agents-f8616a15cbff
+2. https://python.langchain.com/docs/modules/agents/quick_start
 
 """
 
@@ -24,7 +25,7 @@ podem demonstrar uma melhoria de desempenho quando integrados aos agentes.
 """
 import os
 from langchain_openai import ChatOpenAI
-from langchain.agents import Tool
+from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.chains import LLMMathChain
 
 # Verifica se a chave da API está definida
@@ -39,16 +40,18 @@ llm = ChatOpenAI(api_key=key_openai, temperature=0, model=model)
 
 math_chain = LLMMathChain.from_llm(llm=llm)
 
-math_tool = Tool(
-    name="Calculadora",
-    func=math_chain.run,
-    description="Útil para quando você precisa responder perguntas relacionadas a matemática."
+agent = create_openai_functions_agent(
+    agent="zero-shot-react-description",
+    AgentExecutor=math_chain,
+    llm=llm,
+    verbose=True,
+    max_iterations=3
 )
 
-tools = [math_tool]
+tools = [agent]
 
 # Usa o método invoke do math_tool
-response = math_tool.invoke("quantos é 250-123* 2.5")
+response = agent.invoke("quantos é 250-123*2.5")
 print(response)
 
 
