@@ -1,6 +1,6 @@
 # LangChain
 
-![image](https://github.com/KARINAgoncalvesSOARES/LangChain/assets/104592210/53660ffa-0955-442c-afb9-44f1650efa70)
+![alt text](<LimeWire AI Studio Asset.jpeg>)
 
 Nesse repositório estudaremos o framework LangChain desenvolvido em linguagem de programação Python e projetado para trabalhar com o processamento de linguagem natural (NLP). Oferece um conjunto de recursos para tarefas como tokenização, análise sintática, extração de entidades entre outros.
 
