@@ -5,8 +5,8 @@ Data Scientist Jr.: Karina Gonçalves Soares
 
 Link de estudo: 
 
-1. https://medium.com/dev-genius/langchain-in-chains-21-agents-f8616a15cbff
-2. https://python.langchain.com/docs/modules/agents/quick_start
+1. https://medium.com/dev-genius/langchain-in-chains-21-agents-f8616a15cbff - LangChain in Chains #21: Agents!
+2. https://www.hostinger.com.br/tutoriais/o-que-e-react-javascript#:~:text=O%20React%20%C3%A9%20uma%20biblioteca,Model%2DView%2DController). - React
 
 """
 
@@ -21,12 +21,20 @@ Os agentes proporcionam versatilidade, podendo ser usados em ambientes complexos
 Um exemplo disso é que os LLMs, que não possuem um bom desempenho em operações matemáticas, 
 podem demonstrar uma melhoria de desempenho quando integrados aos agentes.
 
+Nesse repositório criamos um agent utilizando "initialize_agent", 
+Utilizamos o agente “zero-shot-react-description” (Isso basicamente indica que o agente tem a capacidade do conceito React e não possui memória.)
+e o "max_iterations" onde específicamos as interções que o agent realizará durante sua operação, esse parametro ajuda a
+controlar o comportamento do agente e como podemos ver ele resolve o problema por etapas usando raciocínio e nos
+entrega a resposta correta.
 
 """
 import os
 from langchain_openai import ChatOpenAI
 from langchain.agents import Tool, initialize_agent
 from langchain.chains import LLMMathChain
+
+import warnings
+warnings.simplefilter("ignore")
 
 # Verifica se a chave da API está definida
 if "OPENAI_API_KEY" not in os.environ:
@@ -46,14 +54,14 @@ from langchain.chains import LLMMathChain
 math_chain = LLMMathChain.from_llm(llm=llm)
 
 math_tool = Tool(
-    name="Calculator",
+    name="Calculadora",
     func=math_chain.run,
-    description="Useful for when you need to answer questions related to Math."
+    description="Útil para quando você precisa responder perguntas relacionadas a matemática."
 )
 
 tools = [math_tool]
 
-print(tools)
+#print(tools)
 
 agent = initialize_agent(
     agent="zero-shot-react-description",
@@ -64,7 +72,7 @@ agent = initialize_agent(
 
 )
 
-print(agent)
+#print(agent)
 
 # Usa o método invoke do math_tool
 response = agent.invoke("quantos é 250-123*2.5")
