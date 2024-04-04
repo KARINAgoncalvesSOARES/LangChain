@@ -38,11 +38,26 @@ key_openai = os.environ["OPENAI_API_KEY"]
 model = "gpt-3.5-turbo"
 llm = ChatOpenAI(api_key=key_openai, temperature=0, model=model)
 
-#math_chain = LLMMathChain.from_llm(llm=llm)
+from langchain.agents import Tool, initialize_agent
+from langchain.chains import LLMMathChain
+
+# CREATE TOOLS
+
+math_chain = LLMMathChain.from_llm(llm=llm)
+
+math_tool = Tool(
+    name="Calculator",
+    func=math_chain.run,
+    description="Useful for when you need to answer questions related to Math."
+)
+
+tools = [math_tool]
+
+print(tools)
 
 agent = initialize_agent(
     agent="zero-shot-react-description",
-    tools=
+    tools=tools,
     llm=llm,
     verbose=True,
     max_iterations=3
