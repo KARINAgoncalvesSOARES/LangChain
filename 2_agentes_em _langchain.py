@@ -54,3 +54,5 @@ print(response)
 
 #Comando para rodar o código:
 #$python3 nome_do_arquivo
+
+#$ pip install numexpr

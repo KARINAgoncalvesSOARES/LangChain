@@ -25,7 +25,7 @@ podem demonstrar uma melhoria de desempenho quando integrados aos agentes.
 """
 import os
 from langchain_openai import ChatOpenAI
-from langchain.agents import AgentExecutor, create_openai_functions_agent
+from langchain.agents import Tool, initialize_agent
 from langchain.chains import LLMMathChain
 
 # Verifica se a chave da API está definida
@@ -38,17 +38,18 @@ key_openai = os.environ["OPENAI_API_KEY"]
 model = "gpt-3.5-turbo"
 llm = ChatOpenAI(api_key=key_openai, temperature=0, model=model)
 
-math_chain = LLMMathChain.from_llm(llm=llm)
+#math_chain = LLMMathChain.from_llm(llm=llm)
 
-agent = create_openai_functions_agent(
+agent = initialize_agent(
     agent="zero-shot-react-description",
-    AgentExecutor=math_chain,
+    tools=
     llm=llm,
     verbose=True,
     max_iterations=3
+
 )
 
-tools = [agent]
+print(agent)
 
 # Usa o método invoke do math_tool
 response = agent.invoke("quantos é 250-123*2.5")
