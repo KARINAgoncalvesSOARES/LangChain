@@ -5,7 +5,7 @@ Data Scientist Jr.: Karina Gonçalves Soares
 
 Link de estudo: 
 
-1. https://medium.com/dev-genius/langchain-in-chains-21-agents-f8616a15cbff
+1. https://medium.com/dev-genius/langchain-in-chains-21-agents-f8616a15cbff - LangChain in Chains #21: Agents!
 
 """
 
