@@ -62,7 +62,7 @@ agent = initialize_agent(
 #print(agent)
 
 # Usa o método invoke do math_tool
-response = agent.invoke("quantos é 250-123*2.5")
+response = agent.invoke("Kanye West tem 46 anos e Taylor Swift tem 34 anos. Qual será a soma de suas idades daqui a 10 anos?")
 print(response)
 
 
