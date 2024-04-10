@@ -46,8 +46,6 @@ key_openai = os.environ["OPENAI_API_KEY"]
 model = "gpt-3.5-turbo"
 llm = ChatOpenAI(api_key=key_openai, temperature=0, model=model)
 
-from langchain.agents import Tool, initialize_agent
-from langchain.chains import LLMMathChain
 
 # CREATE TOOLS
 
@@ -81,3 +79,5 @@ print(response)
 
 #Comando para rodar o código:
 #$python3 nome_do_arquivo
+
+#pip install numexpr
